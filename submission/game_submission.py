@@ -37,7 +37,7 @@ class Game(object):
 
 	@staticmethod
 	def get_data_path():
-		return os.path.join(os.getcwd(), f'game_configs/')
+		return os.path.join(os.getcwd(), 'static', f'game_configs/')
 
 
 @yaml_object(yaml)
@@ -67,6 +67,8 @@ def load_games():
 				with open(os.path.join(root, file_name), 'r') as file:
 					try:
 						game = yaml.load(file)
+						game.path = os.path.join('static', game.path)
+						game.banner = os.path.join('static', game.banner)
 						games.append(game)
 					except Exception as ex:
 						print(ex)

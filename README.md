@@ -36,12 +36,37 @@ run `pip install -r requirements.txt`
 now to run the app just type `python app.py` which should open the app window.
 
 
+### Creating Game Configs
+
+games are in `/TGDKiosk/static/game_configs/author_title/data.yaml` replacing author & title with the author and title of the game. 
+
+Format like this
+
+```
+!Game
+title: title
+author: author
+summary: summary
+group: !Group TGD
+banner: games/mygame/banner.png
+path: games/mygame/gameexe.exe
+```
+
+Game files (banner, exe) should go in `/TGDKiosk/static/games/author_title/` replacing author and title with the games author and title.
 ### PyCharm
 
 Create a new venv for this project, install from requirements.txt (it should detect it automatically)
 
 Build / run config you'll want just a regular python script targeting `app.py` 
 
+For Flask (run in browser, easier for developing)
+![](https://i.imgur.com/F49AHBh.png)
+
+For Gulp (for editing semantic theme this is a must)
+![](https://i.imgur.com/PMSEYxf.png)
+
+For running the App (mostly testing stuff)
+![](https://i.imgur.com/SXwysBS.png)
 ## If you want to modify LESS (Colors and stuff)
 Download and install node.js.
 ### Windows

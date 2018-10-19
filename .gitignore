@@ -33,6 +33,7 @@ node_modules/**/.deps/
 node_modules/**/build/Makefile
 node_modules/**/**/build/Makefile
 
-game_configs/*
-!game_configs/author_title/
+static/game_configs/*
+!static/game_configs/author_title/
+static/games/*
 feedback/
