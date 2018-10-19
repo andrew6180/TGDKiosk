@@ -1,0 +1,57 @@
+/*******************************
+         Site Overrides
+*******************************/
+@font-face {
+	font-family: Kodchasan;
+	src: url('/static/font/Kodchasan-Regular.ttf');
+	font-weight: normal;
+}
+
+
+.background {
+	background-color: @backgroundColor;
+}
+
+
+.light-background {
+	background-color: @lightBackgroundColor;
+}
+
+
+.tgd.description {
+	padding-left: 4px;
+	padding-right: 4px;
+	font-family: Kodchasan, sans-serif;
+	font-size: (@fontSize * 1.5) * 1vw;
+	color: #FFF;
+	text-shadow: none;
+	text-align: center;
+	margin: 0;
+
+	&.logo {
+		font-size: (@fontSize * 4) * 1vw;
+		text-shadow: 0 5px 2px #000;
+	}
+
+	&.float {
+		position: absolute;
+	}
+
+	&.top {
+		top: 8px;
+	}
+
+	&.right {
+		right: 16px;
+		text-align: right;
+	}
+
+	&.bottom {
+		bottom: 8px;
+	}
+
+	&.left {
+		left: 16px;
+		text-align: left;
+	}
+}

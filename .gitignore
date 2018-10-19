@@ -1,0 +1,38 @@
+*.py[co]
+*.DS_*
+# Packages
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+*.db
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# env
+venv
+.idea/
+
+# Ignore native extensions in the node_modules folder (things changed by npm rebuild)
+node_modules/**/*.node
+node_modules/**/*.o
+node_modules/**/*.a
+node_modules/**/*.mk
+node_modules/**/*.gypi
+node_modules/**/*.target
+node_modules/**/.deps/
+node_modules/**/build/Makefile
+node_modules/**/**/build/Makefile
+
+game_configs/*
+!game_configs/author_title/
+feedback/

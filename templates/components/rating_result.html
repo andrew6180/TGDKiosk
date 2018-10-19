@@ -1,0 +1,32 @@
+<div class="ui large feed">
+	<div class="event">
+		<div class="label">
+			<i class="comment alternate icon"></i>
+		</div>
+		<div class="content">
+
+			<div class="summary">
+				<div class="date"> {{ datetime }} </div>
+				from:
+				<div class="user">{{ form.name.data }}</div>
+			</div>
+
+			<div class="extra text">
+				{{ form.feedback.data }}
+			</div>
+
+			<div class="meta">
+				<div class="ui tiny disabled star rating" data-rating="{{ form.rating.data }}"
+				     data-max-rating="5"></div>
+			</div>
+
+			<div class="meta">
+				<span class="play-time" data-seconds="{{ time_played_raw }}">Played for {{ time_played }}</span>
+			</div>
+		</div>
+	</div>
+	<script>
+        $('.rating').rating('disable');
+	</script>
+</div>
+<div class="ui divider"></div>

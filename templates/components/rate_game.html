@@ -1,0 +1,64 @@
+<div class="ui container">
+	<form method="POST" action="/game/{{ game.title }}" class="ui form">
+
+		<div class="ui basic center segment" style="margin-top: 10vh;">
+			<p class="tgd description logo">Thanks for Playing!</p>
+		</div>
+
+		<div class="ui one column center aligned grid">
+
+			<p class="column row tgd description">What did you think of {{ game.title }}?</p>
+
+			<div class="column row">
+				<div class="ui star rating" data-max-rating="5" style="font-size: 5rem;"></div>
+				{{ form.rating(id_="rating") }}
+			</div>
+
+			<div class="column row">
+				<div class="inline field">
+					<label>{{ form.name.label(class_="tgd description") }}</label>
+					{{ form.name(placeholder="Anonymous if blank") }}
+				</div>
+			</div>
+
+			<div class="column row">
+				{{ form.feedback(style="max-width: 40vw;", class_="field", placeholder="Any thoughts you'd like to share with the developer?") }}
+			</div>
+
+			<div class="column row">
+				<input type="submit" class="ui secondary button" value="SUBMIT">
+			</div>
+
+			<div class="column row">
+				<button class="ui basic primary button"
+				        style="-webkit-box-shadow: none !important;-moz-box-shadow: none !important;box-shadow: none !important;">
+					SKIP
+				</button>
+			</div>
+
+			{% if form.errors %}
+				<div class="column row">
+
+					<div class="ui negative message">
+
+						<div class="header">
+							Your rating was not submitted:
+						</div>
+
+						<ui class="list">
+							{% for error in get_flashed_messages() %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ui>
+
+					</div>
+				</div>
+			{% endif %}
+
+		</div>
+
+	</form>
+	<script>$('.ui.rating').rating('setting', 'onRate', function (rating) {
+        $('#rating').val(rating);
+    });</script>
+</div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tucson Comic-Con feedback</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+</head>
+<body style="min-height: 100vh; background-color:#eaeaea;">
+<div class="ui inverted left fixed labeled icon vertical menu">
+
+	<div class="header item">
+		<i class="gamepad icon"></i>
+		{{ game.title }}
+	</div>
+
+	<div id="rating" class="item">
+		<i class="star icon"></i>
+	</div>
+
+	<div id="reviews" class="item">
+		<i class="clipboard list icon"></i>
+	</div>
+
+	<div id="time-played" class="item">
+		<i class="stopwatch icon"></i>
+	</div>
+</div>
+
+<script>
+    $(function () {
+        let averageRating = 0;
+        let avgPlaytimeSeconds = 0;
+        const total = $('.rating').length;
+
+        $('.rating').each(function () {
+            averageRating += $(this).data('rating');
+        });
+        averageRating /= total;
+
+        $('.play-time').each(function () {
+            avgPlaytimeSeconds += $(this).data('seconds');
+        });
+
+        avgPlaytimeSeconds /= total;
+
+        let avgPlaytimeString = new Date(avgPlaytimeSeconds * 1000).toISOString().substr(14, 5);
+        $('#rating').append("Average Rating: " + averageRating.toFixed(1).toString());
+        $('#reviews').append("Total Reviews: " + total.toString());
+        $('#time-played').append("Average Playtime: " + avgPlaytimeString);
+
+    });
+</script>
+<div class="ui container" style="margin-top: 10vh;">
+	<div class="ui divider"></div>

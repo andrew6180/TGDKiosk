@@ -1,0 +1,17 @@
+{% macro game_entry(title, author, summary, group, banner, path) %}
+	<div class="ui segment game">
+
+		<img src="{{ banner }}" style="width: 100%; height: auto;">
+
+		<div class="tgd description container float top right">
+
+			<p class="tgd description logo">{{ title }}</p>
+			<p> {{ summary }}</p>
+			<button class="ui massive primary button" value="{{ title }}"
+			        onclick="$('button').prop('disabled', true).html('{{ title }} is open.'); window.location.href='/game/{{ title }}'">
+				Play
+			</button>
+		</div>
+
+	</div>
+{% endmacro %}

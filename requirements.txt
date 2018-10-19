@@ -1,0 +1,4 @@
+Flask==1.0.2
+Flask-WTF==0.14.2
+PyQt5==5.10
+ruamel.yaml==0.15.54
