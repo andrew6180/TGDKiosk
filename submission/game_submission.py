@@ -68,7 +68,8 @@ def load_games():
 					try:
 						game = yaml.load(file)
 						game.path = os.path.join('static', game.path)
-						game.banner = os.path.join('static', game.banner)
+						if not game.banner.startswith('http'):  # for testing
+							game.banner = os.path.join('static', game.banner)
 						games.append(game)
 					except Exception as ex:
 						print(ex)
@@ -89,7 +90,8 @@ def get_game(title):
 class FeedbackForm(FlaskForm):
 	rating = IntegerField(widget=HiddenInput(), validators=[InputRequired()])
 	feedback = TextAreaField('Feedback')
-	name = StringField('Name or Contact:')
+	name = StringField('Name:')
+	email = StringField('Contact:')
 
 	def output_to_log(self, game, time_played):
 		print(self.name.data)
@@ -118,4 +120,7 @@ class FeedbackForm(FlaskForm):
 			file.write(
 				render_template('components/rating_result.html', form=self, datetime=date_time,
 				                time_played=time_played, time_played_raw=time_played_raw))
-			file.close()
+
+		if self.email.data:
+			with open(os.path.join(path, 'emails.txt'), 'a') as file:
+				file.write(self.email.data + '\n')

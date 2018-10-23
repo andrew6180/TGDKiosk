@@ -6,3 +6,17 @@
 	border-radius: 0;
 	border: 2px solid #000;
 }
+
+.ui.form {
+	::-webkit-input-placeholder {
+		color: rgb(20, 20, 20)
+	}
+
+	::-moz-placeholder {
+		color: rgb(20, 20, 20)
+	}
+
+	:-ms-input-placeholder {
+		color: rgb(20, 20, 20)
+	}
+}

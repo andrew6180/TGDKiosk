@@ -1084,3 +1084,12 @@
   border-radius: 0;
   border: 2px solid #000;
 }
+.ui.form ::-webkit-input-placeholder {
+  color: #141414;
+}
+.ui.form ::-moz-placeholder {
+  color: #141414;
+}
+.ui.form :-ms-input-placeholder {
+  color: #141414;
+}

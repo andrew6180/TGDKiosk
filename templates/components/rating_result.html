@@ -9,6 +9,9 @@
 				<div class="date"> {{ datetime }} </div>
 				from:
 				<div class="user">{{ form.name.data }}</div>
+				{% if form.email.data %}
+					<div class="user email">({{ form.email.data }})</div>
+				{% endif %}
 			</div>
 
 			<div class="extra text">

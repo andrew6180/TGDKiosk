@@ -38,7 +38,7 @@
 	}
 
 	&.top {
-		top: 8px;
+		top: 16px;
 	}
 
 	&.right {
@@ -47,7 +47,7 @@
 	}
 
 	&.bottom {
-		bottom: 8px;
+		bottom: 16px;
 	}
 
 	&.left {

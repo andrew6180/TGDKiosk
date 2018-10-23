@@ -5,13 +5,29 @@
 
 		<div class="tgd description container float top right">
 
-			<p class="tgd description logo">{{ title }}</p>
+			<p class="tgd description right logo">{{ title }}</p>
 			<p> {{ summary }}</p>
 			<button class="ui massive primary button" value="{{ title }}"
 			        onclick="$('button').prop('disabled', true).html('{{ title }} is open.'); window.location.href='/game/{{ title }}'">
 				Play
 			</button>
 		</div>
+		<div class="tgd description container float top left">
+			<p class="tgd description left">
+				{% if group == group.TGD %}
+					Tucson Game Developers
+				{% elif group == group.PIMA %}
+					Pima Community College
+				{% elif group == group.UOFA %}
+					University of Arizona
+				{% endif %}
+			</p>
+		</div>
 
+		<div class="tgd description container float bottom left">
+			<p class="tgd description left">
+				By: {{ author }}
+			</p>
+		</div>
 	</div>
 {% endmacro %}

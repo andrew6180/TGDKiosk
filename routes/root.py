@@ -30,7 +30,8 @@ def show_game(title):
 
 		if not form.validate():
 			flash('Rating Required')
-			return render_template('routes/post_game.html', game=game, form=form)
+			return render_template('routes/post_game.html', game=game, form=form,
+			                       timeout=current_app.config['RATE_GAME_IDLE_RESET'])
 		else:
 			form.output_to_log(game, time_elapsed)
 			return show_thanks()
@@ -45,7 +46,8 @@ def show_game(title):
 
 	time_elapsed = timeit.default_timer() - timer
 
-	return render_template('routes/post_game.html', game=game, form=form)
+	return render_template('routes/post_game.html', game=game, form=form,
+	                       timeout=current_app.config['RATE_GAME_IDLE_RESET'])
 
 
 @ns.route('/games')

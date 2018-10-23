@@ -19,6 +19,10 @@
 					<label>{{ form.name.label(class_="tgd description") }}</label>
 					{{ form.name(placeholder="Anonymous if blank") }}
 				</div>
+				<div class="inline field">
+					<label>{{ form.email.label(class_="tgd description") }}</label>
+					{{ form.email(placeholder="Optional email") }}
+				</div>
 			</div>
 
 			<div class="column row">
@@ -30,10 +34,9 @@
 			</div>
 
 			<div class="column row">
-				<button class="ui basic primary button"
-				        style="-webkit-box-shadow: none !important;-moz-box-shadow: none !important;box-shadow: none !important;">
+				<a class="ui primary button" href="/">
 					SKIP
-				</button>
+				</a>
 			</div>
 
 			{% if form.errors %}
@@ -60,5 +63,24 @@
 	</form>
 	<script>$('.ui.rating').rating('setting', 'onRate', function (rating) {
         $('#rating').val(rating);
-    });</script>
+    });
+
+    let idleTime = {{ timeout }};
+
+    $(function () {
+        let idleTimer;
+
+        function resetTimer() {
+            clearTimeout(idleTimer);
+
+            idleTimer = setTimeout(redirectHome, idleTime * 1000);
+        }
+
+        $(document.body).bind('mousemove keydown click', resetTimer);
+    });
+
+    function redirectHome() {
+        window.location.href = '/';
+    }
+	</script>
 </div>

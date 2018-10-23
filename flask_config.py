@@ -7,3 +7,4 @@ WTF_CSRF_ENABLED = False  # disable csrf on forms.
 SECRET_KEY = "eMZKmymNYyU6wJU3kB3mgt4jJGURmmXVjFVF8RNv4X"
 
 GAME_TIMEOUT_SECONDS = 300  # how long users are able to play in seconds.
+RATE_GAME_IDLE_RESET = 30  # How many seconds to wait with no input before returning to the main page

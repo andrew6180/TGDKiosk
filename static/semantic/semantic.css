@@ -795,7 +795,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .tgd.description.top {
-  top: 8px;
+  top: 16px;
 }
 
 .tgd.description.right {
@@ -804,7 +804,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .tgd.description.bottom {
-  bottom: 8px;
+  bottom: 16px;
 }
 
 .tgd.description.left {
@@ -21051,6 +21051,18 @@ ol.ui.horizontal.list li:before,
   background: #CBD3E1;
   border-radius: 0;
   border: 2px solid #000;
+}
+
+.ui.form ::-webkit-input-placeholder {
+  color: #141414;
+}
+
+.ui.form ::-moz-placeholder {
+  color: #141414;
+}
+
+.ui.form :-ms-input-placeholder {
+  color: #141414;
 }
 /*!
  * # Semantic UI 2.3.3 - Grid

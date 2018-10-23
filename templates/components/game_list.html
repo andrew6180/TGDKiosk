@@ -1,16 +1,9 @@
 {% import 'macros/game_entry.html' as entry %}
 <div class="ui squished grid">
 
-	{% for game_row in games | batch(1, '%nbsp;') %}
-		<div class="one column row">
-
-			{% for game in game_row %}
-				<div class="column">
-					{{ entry.game_entry(game.title, game.author, game.summary, game.group, game.banner, game.path) }}
-				</div>
-
-			{% endfor %}
-
+	{% for game in games %}
+		<div class="one column row" style="margin-bottom: -5px;">
+			{{ entry.game_entry(game.title, game.author, game.summary, game.group, game.banner, game.path) }}
 		</div>
 	{% endfor %}
 
