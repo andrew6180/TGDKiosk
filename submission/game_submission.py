@@ -24,6 +24,7 @@ class Game(object):
 		self.group = Group.TGD
 		self.banner = "http://placehold.it/1440x300"
 		self.path = ''
+		self.disableReview = False
 
 	def dump_yaml(self):
 		if not self.author or not self.title:

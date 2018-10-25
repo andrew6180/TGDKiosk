@@ -50,6 +50,7 @@ summary: summary
 group: !Group TGD
 banner: games/mygame/banner.png
 path: games/mygame/gameexe.exe
+disableReview: False
 ```
 
 Game files (banner, exe) should go in `/TGDKiosk/static/games/author_title/` replacing author and title with the games author and title.

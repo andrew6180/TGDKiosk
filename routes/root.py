@@ -46,8 +46,12 @@ def show_game(title):
 
 	time_elapsed = timeit.default_timer() - timer
 
-	return render_template('routes/post_game.html', game=game, form=form,
-	                       timeout=current_app.config['RATE_GAME_IDLE_RESET'])
+	if not hasattr(game, 'disableReview') or not game.disableReview:
+
+		return render_template('routes/post_game.html', game=game, form=form,
+		                       timeout=current_app.config['RATE_GAME_IDLE_RESET'])
+	else:
+		return show_thanks()
 
 
 @ns.route('/games')
