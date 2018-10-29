@@ -39,7 +39,7 @@ def show_game(title):
 	else:
 		timer = timeit.default_timer()
 		try:
-			process = subprocess.run(game.path, timeout=current_app.config['GAME_TIMEOUT_SECONDS'])
+			process = subprocess.run(game.path, shell=True, timeout=current_app.config['GAME_TIMEOUT_SECONDS'])
 
 		except subprocess.TimeoutExpired:
 			pass  # log here user ran out of time
