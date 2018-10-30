@@ -19017,6 +19017,18 @@ ol.ui.horizontal.list li:before,
   padding: 0;
   background: #454E5D;
   border-radius: 0;
+  line-height: 0;
+  border: 0;
+  z-index: 1;
+}
+
+.ui.segment.game.selected {
+  border: 8px solid #FFF;
+  -webkit-box-shadow: 0 0 25px #000;
+  box-shadow: 0 0 25px #000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
 .ui.segment.game.selected > .button {
@@ -19024,12 +19036,15 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.segment.game.selected img {
-  border: 8px solid #FFF;
-  -webkit-box-shadow: 0 0 25px #000;
-  box-shadow: 0 0 25px #000;
-  box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -webkit-transition: filter 0.2s;
+  -webkit-transition: -webkit-filter 0.2s;
+  transition: -webkit-filter 0.2s;
+  transition: filter 0.2s;
+  transition: filter 0.2s, -webkit-filter 0.2s;
+  -webkit-filter: brightness(40%);
+  filter: brightness(40%);
 }
 
 .ui.segment.game.selected > .description:not(.logo) p:not(.logo),

@@ -8,20 +8,33 @@
 	-moz-border-radius: 0;
 	border-radius: 0;
 
+	line-height: 0;
+	border: 0;
+	z-index: 1;
+
 	&.selected {
+
+		border: 8px solid @white;
+		-webkit-box-shadow: 0 0 25px #000;
+		-moz-box-shadow: 0 0 25px #000;
+		box-shadow: 0 0 25px #000;
+		box-sizing: border-box;
+
+		z-index: 10;
 
 		> .button {
 			visibility: visible;
 		}
 
 		img {
-			border: 8px solid @white;
-			-webkit-box-shadow: 0 0 25px #000;
-			-moz-box-shadow: 0 0 25px #000;
-			box-shadow: 0 0 25px #000;
-			box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			-webkit-box-sizing: border-box;
+			-webkit-transition: filter 0.2s;
+			-moz-transition: filter 0.2s;
+			-ms-transition: filter 0.2s;
+			-o-transition: filter 0.2s;
+			transition: filter 0.2s;
+			filter: brightness(40%);
 		}
 
 		> .description:not(.logo) p:not(.logo), button {
@@ -36,4 +49,6 @@
 	> .description:not(.logo) p:not(.logo), button {
 		visibility: hidden;
 	}
+
+
 }
