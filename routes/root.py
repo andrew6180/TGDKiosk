@@ -1,7 +1,7 @@
 import subprocess
 import timeit
 
-from flask import Blueprint, current_app, flash, redirect, render_template, request
+from flask import Blueprint, current_app, flash, render_template, request
 
 from submission.game_submission import FeedbackForm, get_game, load_games
 
@@ -27,10 +27,8 @@ def show_game(title):
 
 	else:
 		if game.path.split('\\', 1)[1] == 'PROMPT':
-			print('path = prompt')
 			return render_template('routes/wait_for_setup.html', Game=game)
 		else:
-			print('path != prompt')
 			print(game.path)
 			timer = timeit.default_timer()
 			try:
@@ -40,7 +38,7 @@ def show_game(title):
 				pass  # log here user ran out of time
 
 		time_elapsed = timeit.default_timer() - timer
-		return redirect(rate)
+		return rate(game.title)
 
 
 @ns.route('/game/rate/<title>', methods=['GET', 'POST'])
