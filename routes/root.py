@@ -1,7 +1,7 @@
 import subprocess
 import timeit
 
-from flask import Blueprint, current_app, flash, render_template, request
+from flask import Blueprint, current_app, flash, redirect, render_template, request
 
 from submission.game_submission import FeedbackForm, get_game, load_games
 
@@ -16,9 +16,8 @@ def index():
 	return render_template('routes/home.html', games=load_games())
 
 
-@ns.route('/game/<title>', methods=['GET', 'POST'])
+@ns.route('/game/<title>', methods=['GET'])
 def show_game(title):
-	form = FeedbackForm()
 	game = get_game(title)
 	global time_elapsed
 	global timer
@@ -26,6 +25,28 @@ def show_game(title):
 	if not game or not hasattr(game, 'path'):
 		return index()
 
+	else:
+		if game.path.split('\\', 1)[1] == 'PROMPT':
+			print('path = prompt')
+			return render_template('routes/wait_for_setup.html', Game=game)
+		else:
+			print('path != prompt')
+			print(game.path)
+			timer = timeit.default_timer()
+			try:
+				process = subprocess.run(game.path, shell=True, timeout=current_app.config['GAME_TIMEOUT_SECONDS'])
+
+			except subprocess.TimeoutExpired:
+				pass  # log here user ran out of time
+
+		time_elapsed = timeit.default_timer() - timer
+		return redirect(rate)
+
+
+@ns.route('/game/rate/<title>', methods=['GET', 'POST'])
+def rate(title):
+	game = get_game(title)
+	form = FeedbackForm()
 	if request.method == 'POST':
 
 		if not form.validate():
@@ -35,16 +56,6 @@ def show_game(title):
 		else:
 			form.output_to_log(game, time_elapsed)
 			return show_thanks()
-
-	else:
-		timer = timeit.default_timer()
-		try:
-			process = subprocess.run(game.path, shell=True, timeout=current_app.config['GAME_TIMEOUT_SECONDS'])
-
-		except subprocess.TimeoutExpired:
-			pass  # log here user ran out of time
-
-	time_elapsed = timeit.default_timer() - timer
 
 	if not hasattr(game, 'disableReview') or not game.disableReview:
 

@@ -1,0 +1,8 @@
+!Game
+title: title
+author: author
+summary: summary
+group: !Group TGD
+banner: http://placehold.it/1440x300
+path: notepad.exe
+disableReview: False
